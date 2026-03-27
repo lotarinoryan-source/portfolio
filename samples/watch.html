@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CHRONOS – Luxury Watch Brand</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080808;--surface:#111;--gold:#b8960c;--gold-light:#d4af37;--gold-pale:#f0d060;--text:#f5f0e8;--muted:#7a7060;--border:rgba(184,150,12,0.2)}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 6%;display:flex;align-items:center;justify-content:space-between;transition:background .4s,padding .3s}
+nav.scrolled{background:rgba(8,8,8,0.95);backdrop-filter:blur(20px);padding:16px 6%;border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:var(--gold-light)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:0.78rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);transition:color .3s;font-weight:500}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-cta{padding:10px 28px;border:1px solid var(--gold);color:var(--gold-light);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;transition:all .3s}
+.nav-cta:hover{background:var(--gold);color:#000}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#000}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(184,150,12,0.08) 0%,transparent 60%)}
+.hero-content{text-align:center;z-index:1;padding:120px 5% 80px}
+.hero-eyebrow{font-size:0.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;font-weight:500}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,10vw,9rem);font-weight:600;line-height:0.9;letter-spacing:-2px;margin-bottom:30px}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:0.9rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:50px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.8}
+.hero-watch{width:280px;height:280px;margin:0 auto 50px;position:relative}
+.watch-face{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2a2a2a,#0a0a0a);border:2px solid var(--gold);box-shadow:0 0 60px rgba(184,150,12,0.3),inset 0 0 40px rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;position:relative}
+.watch-face::before{content:'';position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(184,150,12,0.15)}
+.watch-face::after{content:'CHRONOS';position:absolute;top:38%;font-family:'Cormorant Garamond',serif;font-size:0.7rem;letter-spacing:4px;color:var(--gold);text-transform:uppercase}
+.watch-hands{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.hand{position:absolute;bottom:50%;left:50%;transform-origin:bottom center;border-radius:2px}
+.hand-hour{width:3px;height:70px;background:var(--gold-light);margin-left:-1.5px;transform:rotate(120deg)}
+.hand-min{width:2px;height:90px;background:#fff;margin-left:-1px;transform:rotate(210deg)}
+.hand-sec{width:1px;height:100px;background:var(--gold);margin-left:-0.5px;transform:rotate(0deg)}
+.watch-center{width:10px;height:10px;background:var(--gold);border-radius:50%;z-index:10;box-shadow:0 0 10px var(--gold)}
+.hero-btns{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.btn-gold{padding:16px 44px;background:var(--gold);color:#000;font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;transition:all .3s}
+.btn-gold:hover{background:var(--gold-pale);transform:translateY(-2px)}
+.btn-border{padding:16px 44px;border:1px solid rgba(255,255,255,0.2);color:var(--text);font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:all .3s}
+.btn-border:hover{border-color:var(--gold);color:var(--gold-light)}
+
+/* MARQUEE */
+.marquee{padding:20px 0;background:var(--gold);overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;gap:60px;animation:marquee 20s linear infinite}
+.marquee-item{font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:#000;font-weight:600}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* COLLECTION */
+.collection{padding:120px 6%}
+.section-eyebrow{font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:500}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:600;line-height:1.1;margin-bottom:60px}
+.collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px}
+.watch-card{position:relative;overflow:hidden;cursor:pointer;background:var(--surface)}
+.watch-card-img{height:380px;display:flex;align-items:center;justify-content:center;font-size:5rem;transition:transform .6s ease;background:linear-gradient(160deg,#1a1a1a,#0a0a0a)}
+.watch-card:hover .watch-card-img{transform:scale(1.05)}
+.watch-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:30px;transform:translateY(20px);transition:transform .4s ease}
+.watch-card:hover .watch-card-overlay{transform:translateY(0)}
+.watch-card-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:6px}
+.watch-card-ref{font-size:0.72rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.watch-card-price{font-size:1.1rem;font-weight:600;color:var(--gold-light)}
+.watch-card-btn{display:inline-block;margin-top:14px;padding:10px 24px;border:1px solid var(--gold);color:var(--gold-light);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;opacity:0;transform:translateY(10px);transition:all .4s .1s}
+.watch-card:hover .watch-card-btn{opacity:1;transform:translateY(0)}
+.watch-card-btn:hover{background:var(--gold);color:#000}
+
+/* CRAFTSMANSHIP */
+.craft{padding:120px 6%;display:flex;gap:80px;align-items:center;flex-wrap:wrap;background:var(--surface)}
+.craft-visual{flex:1;min-width:280px}
+.craft-dial{width:100%;max-width:420px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 30%,#2a2a2a,#050505);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;box-shadow:0 0 80px rgba(184,150,12,0.15);font-size:8rem;margin:0 auto}
+.craft-text{flex:1;min-width:280px}
+.craft-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:600;line-height:1.2;margin-bottom:24px}
+.craft-text h2 em{font-style:italic;color:var(--gold-light)}
+.craft-text p{color:var(--muted);line-height:1.9;font-size:0.9rem;margin-bottom:16px}
+.craft-specs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+.spec{border-top:1px solid var(--border);padding-top:16px}
+.spec-val{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--gold-light)}
+.spec-lbl{font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+/* HERITAGE */
+.heritage{padding:120px 6%;text-align:center;position:relative;overflow:hidden}
+.heritage::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(184,150,12,0.06) 0%,transparent 70%)}
+.heritage h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,5rem);font-weight:600;line-height:1.1;margin-bottom:24px;z-index:1;position:relative}
+.heritage h2 em{font-style:italic;color:var(--gold-light)}
+.heritage p{color:var(--muted);max-width:560px;margin:0 auto 50px;line-height:1.9;font-size:0.9rem;z-index:1;position:relative}
+.timeline{display:flex;justify-content:center;gap:0;max-width:900px;margin:0 auto;position:relative;z-index:1}
+.timeline::before{content:'';position:absolute;top:20px;left:10%;right:10%;height:1px;background:var(--border)}
+.timeline-item{flex:1;text-align:center;padding:0 10px}
+.timeline-dot{width:40px;height:40px;border-radius:50%;background:var(--bg);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:0.7rem;color:var(--gold);font-weight:600;position:relative;z-index:1}
+.timeline-year{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:6px}
+.timeline-desc{font-size:0.75rem;color:var(--muted);line-height:1.6}
+
+/* FOOTER */
+footer{background:#000;border-top:1px solid var(--border);padding:60px 6% 30px}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;margin-bottom:50px}
+.footer-brand .logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;letter-spacing:6px;color:var(--gold-light);margin-bottom:14px}
+.footer-brand p{font-size:0.8rem;color:var(--muted);line-height:1.8;max-width:240px}
+.footer-nav h4{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.footer-nav ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-nav ul a{font-size:0.82rem;color:var(--muted);transition:color .3s}
+.footer-nav ul a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:0.75rem;color:var(--muted)}
+
+@media(max-width:768px){
+  .craft{flex-direction:column}
+  .timeline{flex-direction:column;gap:30px}
+  .timeline::before{display:none}
+  nav .nav-links{display:none}
+  .collection-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo">Chronos</div>
+  <ul class="nav-links">
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#craft">Craftsmanship</a></li>
+    <li><a href="#heritage">Heritage</a></li>
+  </ul>
+  <a href="#collection" class="nav-cta">Discover</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Swiss Precision · Since 1887</div>
+    <h1>Time is an <em>Art</em></h1>
+    <p class="hero-sub">Masterpieces crafted for those who understand that true luxury is measured in moments</p>
+    <div class="hero-watch">
+      <div class="watch-face">
+        <div class="watch-hands">
+          <div class="hand hand-hour" id="hourHand"></div>
+          <div class="hand hand-min" id="minHand"></div>
+          <div class="hand hand-sec" id="secHand"></div>
+          <div class="watch-center"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#collection" class="btn-gold">Explore Collection</a>
+      <a href="#craft" class="btn-border">Our Craft</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-inner">
+    <span class="marquee-item">Swiss Made</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Handcrafted Excellence</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Since 1887</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Precision Engineering</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Timeless Design</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Swiss Made</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Handcrafted Excellence</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Since 1887</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Precision Engineering</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Timeless Design</span>
+    <span class="marquee-item">·</span>
+  </div>
+</div>
+
+<section class="collection" id="collection">
+  <div class="section-eyebrow">2026 Collection</div>
+  <h2 class="section-title">Masterpieces of Time</h2>
+  <div class="collection-grid">
+    <div class="watch-card">
+      <div class="watch-card-img" style="background:linear-gradient(160deg,#1a1208,#3d2b0a)">⌚</div>
+      <div class="watch-card-overlay">
+        <div class="watch-card-name">Chronos Noir</div>
+        <div class="watch-card-ref">Ref. CH-001-BK</div>
+        <div class="watch-card-price">₱485,000</div>
+        <a href="#" class="watch-card-btn">View Details</a>
+      </div>
+    </div>
+    <div class="watch-card">
+      <div class="watch-card-img" style="background:linear-gradient(160deg,#0a1a2a,#0d2d4a)">🕰️</div>
+      <div class="watch-card-overlay">
+        <div class="watch-card-name">Oceanic Blue</div>
+        <div class="watch-card-ref">Ref. CH-002-BL</div>
+        <div class="watch-card-price">₱620,000</div>
+        <a href="#" class="watch-card-btn">View Details</a>
+      </div>
+    </div>
+    <div class="watch-card">
+      <div class="watch-card-img" style="background:linear-gradient(160deg,#1a0a0a,#3d1010)">⏱️</div>
+      <div class="watch-card-overlay">
+        <div class="watch-card-name">Heritage Rouge</div>
+        <div class="watch-card-ref">Ref. CH-003-RD</div>
+        <div class="watch-card-price">₱890,000</div>
+        <a href="#" class="watch-card-btn">View Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="craft" id="craft">
+  <div class="craft-visual">
+    <div class="craft-dial">⚙️</div>
+  </div>
+  <div class="craft-text">
+    <div class="section-eyebrow">The Art of Making</div>
+    <h2>Crafted with <em>Obsessive</em> Precision</h2>
+    <p>Every Chronos timepiece is the result of over 600 hours of meticulous handcrafting by our master watchmakers in Geneva. Each component is finished to tolerances measured in microns.</p>
+    <p>We use only the finest materials — sapphire crystal, 18k gold, and movements assembled under 10x magnification — because we believe that what you cannot see matters just as much as what you can.</p>
+    <div class="craft-specs">
+      <div class="spec"><div class="spec-val">600+</div><div class="spec-lbl">Hours per Watch</div></div>
+      <div class="spec"><div class="spec-val">312</div><div class="spec-lbl">Components</div></div>
+      <div class="spec"><div class="spec-val">±2s</div><div class="spec-lbl">Daily Accuracy</div></div>
+      <div class="spec"><div class="spec-val">50m</div><div class="spec-lbl">Water Resistance</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="heritage" id="heritage">
+  <div class="section-eyebrow">Our Story</div>
+  <h2>A Century of <em>Excellence</em></h2>
+  <p>From a small Geneva atelier to the wrists of world leaders and visionaries — our journey is one of unwavering commitment to the art of timekeeping.</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot">I</div>
+      <div class="timeline-year">1887</div>
+      <div class="timeline-desc">Founded in Geneva by Henri Chronos</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">II</div>
+      <div class="timeline-year">1924</div>
+      <div class="timeline-desc">First tourbillon movement created</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">III</div>
+      <div class="timeline-year">1968</div>
+      <div class="timeline-desc">Royal family commission awarded</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">IV</div>
+      <div class="timeline-year">2026</div>
+      <div class="timeline-desc">New era of modern luxury begins</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">Chronos</div>
+      <p>Crafting timeless masterpieces since 1887. Every second deserves to be extraordinary.</p>
+    </div>
+    <div class="footer-nav"><h4>Collection</h4><ul><li><a href="#">Noir Series</a></li><li><a href="#">Oceanic</a></li><li><a href="#">Heritage</a></li><li><a href="#">Limited Editions</a></li></ul></div>
+    <div class="footer-nav"><h4>Company</h4><ul><li><a href="#">Our Story</a></li><li><a href="#">Craftsmanship</a></li><li><a href="#">Boutiques</a></li><li><a href="#">Press</a></li></ul></div>
+    <div class="footer-nav"><h4>Services</h4><ul><li><a href="#">Servicing</a></li><li><a href="#">Authentication</a></li><li><a href="#">Engraving</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Chronos SA, Geneva. All rights reserved.</p>
+    <p>Crafted with precision · Worn with purpose</p>
+  </div>
+</footer>
+
+<script>
+// Live clock hands
+function updateClock(){
+  const now = new Date();
+  const s = now.getSeconds(), m = now.getMinutes(), h = now.getHours() % 12;
+  const sDeg = s * 6;
+  const mDeg = m * 6 + s * 0.1;
+  const hDeg = h * 30 + m * 0.5;
+  document.getElementById('secHand').style.transform  = `rotate(${sDeg}deg)`;
+  document.getElementById('minHand').style.transform  = `rotate(${mDeg}deg)`;
+  document.getElementById('hourHand').style.transform = `rotate(${hDeg}deg)`;
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// Sticky nav
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+</body>
+</html>
